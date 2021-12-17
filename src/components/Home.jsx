@@ -15,8 +15,8 @@ class Home extends React.Component {
   render() {
     return (
       <Container>
-        <Row>
-          <Col className="px-0">
+        <Row className="">
+          <Col className="px-0 d-flex justify-content-around">
             <Form.Group className="formBasicEmail">
               <FormLabel>Search</FormLabel>
               <FormControl

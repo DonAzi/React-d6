@@ -1,16 +1,15 @@
 import React from "react";
-import { Card, Col, Span } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import MyBadge from "./MyBadge";
-
+import CommentArea from "./CommentArea";
 class SingleBook extends React.Component {
   state = {
     selected: false,
   };
   render() {
     return (
-      <Col className="my-2 px-0">
+      <>
         <Card
-          onClick={() => this.setState({ selected: !this.state.selected })}
           style={{
             border: this.state.selected ? "2px solid red" : "none",
           }}
@@ -28,10 +27,17 @@ class SingleBook extends React.Component {
             <Card.Title className=" text-dark text-truncate">
               {this.props.book.title}
             </Card.Title>
-            <MyBadge text="Im a badge" color={"info"} />
+            <MyBadge text="info" color={"secondary"} />
+            <Button
+              className="bg-primary btn-md"
+              onClick={() => this.setState({ selected: !this.state.selected })}
+            >
+              Comment
+            </Button>
           </Card.Body>
         </Card>
-      </Col>
+        {this.state.selected && <CommentArea />}
+      </>
     );
   }
 }
