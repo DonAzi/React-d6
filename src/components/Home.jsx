@@ -16,7 +16,7 @@ class Home extends React.Component {
     return (
       <Container>
         <Row>
-          <Col>
+          <Col className="px-0">
             <Form.Group className="formBasicEmail">
               <FormLabel>Search</FormLabel>
               <FormControl
@@ -36,7 +36,7 @@ class Home extends React.Component {
               ) => b.title.toLowerCase().includes(this.state.searchQuery)
             )
             .map((b) => (
-              <Col className="my-3">
+              <Col className="my-3 px-0">
                 <Singlebook book={b} />
               </Col>
             ))}

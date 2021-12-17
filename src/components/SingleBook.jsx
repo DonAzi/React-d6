@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Span } from "react-bootstrap";
+import MyBadge from "./MyBadge";
 
 class SingleBook extends React.Component {
   state = {
@@ -7,7 +8,7 @@ class SingleBook extends React.Component {
   };
   render() {
     return (
-      <Col className="my-2">
+      <Col className="my-2 px-0">
         <Card
           onClick={() => this.setState({ selected: !this.state.selected })}
           style={{
@@ -27,7 +28,7 @@ class SingleBook extends React.Component {
             <Card.Title className=" text-dark text-truncate">
               {this.props.book.title}
             </Card.Title>
-            {/* <Button variant="primary"></Button> */}
+            <MyBadge text="Im a badge" color={"info"} />
           </Card.Body>
         </Card>
       </Col>
