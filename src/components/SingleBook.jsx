@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 import MyBadge from "./MyBadge";
-import CommentArea from "./CommentArea";
 class SingleBook extends React.Component {
   state = {
     selected: false,
@@ -29,17 +28,18 @@ class SingleBook extends React.Component {
             </Card.Title>
             <MyBadge text="info" color={"secondary"} />
             <Button
-              className="bg-primary btn-md"
+              className="bg-primary btn-sm mx-1"
               onClick={() => this.setState({ selected: !this.state.selected })}
             >
               Comment
             </Button>
           </Card.Body>
         </Card>
-        {this.state.selected && <CommentArea />}
       </>
     );
   }
 }
 
 export default SingleBook;
+
+// {this.state.selected && <CommentArea />}

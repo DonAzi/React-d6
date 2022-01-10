@@ -10,18 +10,17 @@ class CommentArea extends React.Component {
     console.log(JSON.stringify(this.props));
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" +
-          this.props.elementId,
+        "https://striveschool-api.herokuapp.com/api/comments/",
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIyMDAzOTY4YjNlMDAwMTViN2FjYjEiLCJpYXQiOjE2MzkwNTU0MTgsImV4cCI6MTY0MDI2NTAxOH0.XTaSP1lDIsQ_Ug_tZNsfvN_fuvKMP8Jx1AsQTiyG7VA",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWRjM2EzNmYyNjM3ODAwMTVlNTBkMWIiLCJpYXQiOjE2NDE4MjI3NzQsImV4cCI6MTY0MzAzMjM3NH0.a7fBnNPGw-LxNNLCAXWwzgZOYXWy-7wlM1neISqASIg",
           },
         }
       );
 
       let comments = await response.json();
-      this.setState({ comments: comments });
+      this.setState({ comments: this.state.comments });
       console.log(comments);
     } catch (error) {
       console.log(error);
@@ -33,11 +32,7 @@ class CommentArea extends React.Component {
     return (
       <>
         <Form.Row>
-          <Form.Label column lg={2}></Form.Label>
-          <Col>
-            <Form.Control type="text" placeholder="Comment" />
-          </Col>
-          <Form.Label column lg={2}></Form.Label>
+          <Form.Control type="text" placeholder="Comment" />
           <Col>
             {this.state.comments.map((com) => (
               <div> {com.comment}</div>

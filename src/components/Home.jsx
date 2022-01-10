@@ -8,6 +8,7 @@ import {
   FormControl,
 } from "react-bootstrap";
 import Singlebook from "./SingleBook";
+import CommentArea from "./CommentArea";
 
 class Home extends React.Component {
   state = { searchQuery: "" };
@@ -28,7 +29,10 @@ class Home extends React.Component {
             </Form.Group>
           </Col>
         </Row>
-        <Row className="g-4" xs={2} md={4}>
+        <Row className="">
+          <Col>
+            <CommentArea />
+          </Col>
           {this.props.card
             .filter(
               (
@@ -36,7 +40,7 @@ class Home extends React.Component {
               ) => b.title.toLowerCase().includes(this.state.searchQuery)
             )
             .map((b) => (
-              <Col className="my-3 px-0">
+              <Col xl={3} className="my-3">
                 <Singlebook book={b} />
               </Col>
             ))}
