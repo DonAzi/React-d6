@@ -8,7 +8,6 @@ import {
   FormControl,
 } from "react-bootstrap";
 import Singlebook from "./SingleBook";
-import CommentArea from "./CommentArea";
 
 class Home extends React.Component {
   state = { searchQuery: "" };
@@ -30,9 +29,6 @@ class Home extends React.Component {
           </Col>
         </Row>
         <Row className="">
-          <Col>
-            <CommentArea />
-          </Col>
           {this.props.card
             .filter(
               (

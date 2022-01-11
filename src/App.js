@@ -10,6 +10,7 @@ import SingleBook from "./components/SingleBook";
 import history from "./jsonData/history.json";
 
 function App() {
+  console.log("TEST");
   return (
     <div className="App">
       <Navbar />

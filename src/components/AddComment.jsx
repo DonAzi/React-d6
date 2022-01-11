@@ -1,34 +1,46 @@
-import React, { Component } from "react";
-import { Button, Form } from "bootstrap";
+import { Component } from "react";
+import { Button, Form } from "react-bootstrap";
 
 class AddComments extends Component {
   state = {
     //these to hold the (dynamic) data but are empty
-    comments: {
-      comments: "",
+    comment: {
+      comment: "",
       rate: 1,
       elementId: this.props.asin,
     },
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.asin !== this.props.asin) {
+      this.setState({
+        comment: {
+          ...this.state.comment,
+          elementId: this.props.asin,
+        },
+      });
+    }
+  }
+
   sendComment = async (e) => {
-    e.preventDefault(); //not sure why is it here, but dont worry will find out soon...
+    e.preventDefault();
 
     try {
       let DataFromBackStreet = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/",
         {
           method: "POST",
-          body: JSON.stringify(this.state.comments),
+          body: JSON.stringify(this.state.comment),
           headers: {
             "Content-type": "application/json",
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWRjM2EzNmYyNjM3ODAwMTVlNTBkMWIiLCJpYXQiOjE2NDE4MjI3NzQsImV4cCI6MTY0MzAzMjM3NH0.a7fBnNPGw-LxNNLCAXWwzgZOYXWy-7wlM1neISqASIg",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWRjM2EzNmYyNjM3ODAwMTVlNTBkMWIiLCJpYXQiOjE2NDE5MzI0MTgsImV4cCI6MTY0MzE0MjAxOH0.i0D32_MiWljqUQyXC2j4CL0V4tMZRe9MbB5c64-eIwY",
           },
         }
       );
 
       if (DataFromBackStreet.ok) {
+        console.log("TEST one more TEST");
         alert("Comment has been added !");
       } else {
         console.log("error");
@@ -48,13 +60,13 @@ class AddComments extends Component {
             <Form.Control
               type="text"
               placeholder="Your Thoughts here..."
-              value={this.state.comments.comments}
+              value={this.state.comment.comment}
               onChange={(e) =>
                 this.setState({
-                  comments: {
+                  comment: {
                     //   did not understand much of spread op
-                    ...this.state.comments,
-                    comments: e.target.value,
+                    ...this.state.comment,
+                    comment: e.target.value,
                   },
                 })
               }
@@ -64,11 +76,11 @@ class AddComments extends Component {
             <Form.Label>Rate</Form.Label>
             <Form.Control
               as="select"
-              value={this.state.comments.rate}
+              value={this.state.comment.rate}
               onChange={(e) =>
                 this.setState({
                   //   did not understand much of spread op
-                  comments: { ...this.state.comments, rate: e.target.value },
+                  comment: { ...this.state.comment, rate: e.target.value },
                 })
               }
             >

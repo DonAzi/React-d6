@@ -1,13 +1,13 @@
-import { ListGroup } from "bootstrap";
+import { ListGroup } from "react-bootstrap";
 
 import SingleComment from "./SingleComment";
 
-const CommentList = ({ commentShow }) => {
+const CommentList = ({ commentShow }) => (
   <ListGroup style={{ color: "black" }}>
     {commentShow.map((com) => (
       <SingleComment comment={com} key={com._id} />
     ))}
-  </ListGroup>;
-};
+  </ListGroup>
+);
 
 export default CommentList;

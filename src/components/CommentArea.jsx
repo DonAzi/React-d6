@@ -8,14 +8,15 @@ class CommentArea extends React.Component {
   };
 
   componentDidMount = async () => {
-    console.log(JSON.stringify(this.props));
+    // console.log(JSON.stringify(this.props));
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/",
+        "https://striveschool-api.herokuapp.com/api/comments/" +
+          this.props.asin,
         {
           headers: {
             Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWRjM2EzNmYyNjM3ODAwMTVlNTBkMWIiLCJpYXQiOjE2NDE4MjI3NzQsImV4cCI6MTY0MzAzMjM3NH0.a7fBnNPGw-LxNNLCAXWwzgZOYXWy-7wlM1neISqASIg",
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWRjM2EzNmYyNjM3ODAwMTVlNTBkMWIiLCJpYXQiOjE2NDE5MzI0MTgsImV4cCI6MTY0MzE0MjAxOH0.i0D32_MiWljqUQyXC2j4CL0V4tMZRe9MbB5c64-eIwY",
           },
         }
       );
@@ -41,24 +42,5 @@ class CommentArea extends React.Component {
     );
   }
 }
-
-// const postComment = async (asin, comment) => {
-//   try {
-//     await fetch("https://striveschool-api.herokuapp.com/api/comments/", {
-//       method: "POST",
-//       body: JSON.stringify({
-//         elementId: asin,
-//         rate: 1,
-//         comment: comment,
-//       }),
-//       headers: {
-//         Authorization:
-//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWRjM2EzNmYyNjM3ODAwMTVlNTBkMWIiLCJpYXQiOjE2NDE4MjI3NzQsImV4cCI6MTY0MzAzMjM3NH0.a7fBnNPGw-LxNNLCAXWwzgZOYXWy-7wlM1neISqASIg",
-//       },
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 export default CommentArea;

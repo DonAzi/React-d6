@@ -1,10 +1,15 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import CommentArea from "./CommentArea";
 import MyBadge from "./MyBadge";
+
 class SingleBook extends React.Component {
+  //
+
   state = {
     selected: false,
   };
+
   render() {
     return (
       <>
@@ -35,6 +40,7 @@ class SingleBook extends React.Component {
             </Button>
           </Card.Body>
         </Card>
+        {this.state.selected && <CommentArea asin={this.props.book.asin} />}
       </>
     );
   }
