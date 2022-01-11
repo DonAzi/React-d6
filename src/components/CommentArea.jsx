@@ -1,5 +1,6 @@
-import { Form, Col, Button } from "react-bootstrap";
 import React from "react";
+import AddComments from "./AddComment";
+import CommentList from "./CommentList";
 
 class CommentArea extends React.Component {
   state = {
@@ -18,10 +19,13 @@ class CommentArea extends React.Component {
           },
         }
       );
-
-      let comments = await response.json();
-      this.setState({ comments: this.state.comments });
-      console.log(comments);
+      console.log(response);
+      if (response.ok) {
+        let commentsFromBackEnd = await response.json();
+        this.setState({ comments: commentsFromBackEnd });
+      } else {
+        console.log("error");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -31,44 +35,30 @@ class CommentArea extends React.Component {
   render() {
     return (
       <>
-        <Form.Row>
-          <Form.Control type="text" placeholder="Comment" />
-          <Col>
-            {this.state.comments.map((com) => (
-              <div> {com.comment}</div>
-            ))}
-            <Button
-              onClick={() => {
-                postComment(this.props.elementId, "hi");
-              }}
-            >
-              submit
-            </Button>
-          </Col>
-        </Form.Row>
-        <br />
+        <AddComments asin={this.props.asin} />
+        <CommentList commentShow={this.state.comments} />
       </>
     );
   }
 }
 
-const postComment = async (asin, comment) => {
-  try {
-    await fetch("https://striveschool-api.herokuapp.com/api/comments/", {
-      method: "POST",
-      body: JSON.stringify({
-        elementId: asin,
-        rate: 1,
-        comment: comment,
-      }),
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWIyMDAzOTY4YjNlMDAwMTViN2FjYjEiLCJpYXQiOjE2MzkwNTU0MTgsImV4cCI6MTY0MDI2NTAxOH0.XTaSP1lDIsQ_Ug_tZNsfvN_fuvKMP8Jx1AsQTiyG7VA",
-      },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
+// const postComment = async (asin, comment) => {
+//   try {
+//     await fetch("https://striveschool-api.herokuapp.com/api/comments/", {
+//       method: "POST",
+//       body: JSON.stringify({
+//         elementId: asin,
+//         rate: 1,
+//         comment: comment,
+//       }),
+//       headers: {
+//         Authorization:
+//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWRjM2EzNmYyNjM3ODAwMTVlNTBkMWIiLCJpYXQiOjE2NDE4MjI3NzQsImV4cCI6MTY0MzAzMjM3NH0.a7fBnNPGw-LxNNLCAXWwzgZOYXWy-7wlM1neISqASIg",
+//       },
+//     });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 export default CommentArea;
