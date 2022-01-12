@@ -40,7 +40,6 @@ class AddComments extends Component {
       );
 
       if (DataFromBackStreet.ok) {
-        console.log("TEST one more TEST");
         alert("Comment has been added !");
       } else {
         console.log("error");
@@ -75,7 +74,7 @@ class AddComments extends Component {
           <Form.Group>
             <Form.Label>Rate</Form.Label>
             <Form.Control
-              as="select"
+              as="select" //why select why as
               value={this.state.comment.rate}
               onChange={(e) =>
                 this.setState({
