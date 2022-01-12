@@ -2,7 +2,7 @@ import { Jumbotron, Button } from "react-bootstrap";
 
 const MyJumbotron = () => {
   return (
-    <Jumbotron>
+    <Jumbotron className="bg-dark">
       <h1>Hello, React!</h1>
       <h3>Welcome</h3>
       <p>

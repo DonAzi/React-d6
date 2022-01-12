@@ -18,7 +18,7 @@ class Home extends React.Component {
         <Row className="">
           <Col className="px-0 d-flex justify-content-around">
             <Form.Group className="formBasicEmail">
-              <FormLabel>Search</FormLabel>
+              <FormLabel className="text-primary h2"> Search here</FormLabel>
               <FormControl
                 type="text"
                 placeholder="Search here"
