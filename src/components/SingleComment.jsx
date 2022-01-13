@@ -23,14 +23,14 @@ export const deleteComment = async (asin) => {
 };
 
 export const SingleComment = ({ comment }) => (
-  <ListGroup.Item>
+  <ListGroup.Item className="d-flex">
     {comment.comment}
     <Button
       variant="danger"
-      className="btn-sm ml-2"
+      className="btn btn-sm ml-auto"
       onClick={() => deleteComment(comment._id)}
     >
-      DELTE
+      X
     </Button>
   </ListGroup.Item>
 );

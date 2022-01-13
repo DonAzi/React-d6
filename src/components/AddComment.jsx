@@ -55,7 +55,7 @@ class AddComments extends Component {
       <div>
         <Form onSubmit={this.sendComment}>
           <Form.Group>
-            <Form.Label>-----------------------------</Form.Label>
+            <Form.Label>Comments</Form.Label>
             <Form.Control
               type="text"
               placeholder="Your Thoughts here..."
@@ -72,7 +72,7 @@ class AddComments extends Component {
             />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Rate</Form.Label>
+            <Form.Label>Rate for this book</Form.Label>
             <Form.Control
               as="select" //why select why as
               value={this.state.comment.rate}
@@ -90,7 +90,7 @@ class AddComments extends Component {
               <option>5</option>
             </Form.Control>
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button className="btn btn-sm mb-2" variant="primary" type="submit">
             SUBMIT
           </Button>
         </Form>

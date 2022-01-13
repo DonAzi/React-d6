@@ -54,7 +54,7 @@ class Home extends React.Component {
                       changeSelectedCard={(asin) => {
                         console.log("TEST for TEST 55");
                         this.setState({ ...this.state, selectedCard: asin });
-                        console.log(this.state);
+                        // console.log(this.state);
                       }}
                     />
                   </Col>
@@ -62,8 +62,10 @@ class Home extends React.Component {
             </Row>
           </Col>
           <Col md={4}>
-            <h1>Gossips</h1>
-            <CommentArea asin={this.state.selectedCard} />
+            <div className="d-block-flex mt-5 ml-5">
+              <h4> ID : {this.state.selectedCard}</h4>
+              <CommentArea asin={this.state.selectedCard} />
+            </div>
             {/* {this.state.selected && <CommentArea asin={this.props.book.asin} />} */}
           </Col>
         </Row>
