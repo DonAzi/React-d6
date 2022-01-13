@@ -1,6 +1,6 @@
 import { ListGroup } from "react-bootstrap";
 
-import SingleComment from "./SingleComment";
+import { SingleComment } from "./SingleComment.jsx";
 
 const CommentList = ({ commentShow }) => (
   <ListGroup style={{ color: "black" }}>

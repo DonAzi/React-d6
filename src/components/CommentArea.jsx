@@ -9,13 +9,12 @@ class CommentArea extends React.Component {
     isError: false,
   };
 
-  componentDidMount = async () => {
+  fetchData = async (asin) => {
     // console.log(JSON.stringify(this.props));
     // console.log(this.props);
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" +
-          this.props.asin,
+        "https://striveschool-api.herokuapp.com/api/comments/" + asin,
         {
           headers: {
             Authorization:
@@ -23,10 +22,10 @@ class CommentArea extends React.Component {
           },
         }
       );
-      console.log(response);
       if (response.ok) {
         let commentsFromBackEnd = await response.json();
         this.setState({ comments: commentsFromBackEnd, isError: false });
+        console.log("==================TEST", commentsFromBackEnd);
       } else {
         console.log("error");
         this.setState({ isError: true });
@@ -36,6 +35,19 @@ class CommentArea extends React.Component {
       alert(error);
     }
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.asin !== this.props.asin) {
+      console.log("The previous asin", prevProps);
+      console.log("The current asin", this.props.asin);
+      this.fetchData(this.props.asin);
+
+      //fetch the comments
+      //set the state with the comments
+      //
+      console.log("heloo TEST line 48");
+    }
+  }
 
   render() {
     return (

@@ -7,7 +7,7 @@ class AddComments extends Component {
     comment: {
       comment: "",
       rate: 1,
-      elementId: this.props.asin,
+      elementId: null,
     },
   };
 
@@ -43,10 +43,10 @@ class AddComments extends Component {
         alert("Comment has been added !");
       } else {
         console.log("error");
-        alert("Something is wrong, but what is it interesting...");
+        alert("Something went wrong, interesting...");
       }
     } catch (error) {
-      console.log("error");
+      alert("catcH error");
     }
   };
 
@@ -55,7 +55,7 @@ class AddComments extends Component {
       <div>
         <Form onSubmit={this.sendComment}>
           <Form.Group>
-            <Form.Label>Comments</Form.Label>
+            <Form.Label>-----------------------------</Form.Label>
             <Form.Control
               type="text"
               placeholder="Your Thoughts here..."

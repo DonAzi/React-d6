@@ -1,24 +1,26 @@
 import React from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
-import CommentArea from "./CommentArea";
 import MyBadge from "./MyBadge";
 
 class SingleBook extends React.Component {
   //
-
   state = {
     selected: false,
   };
-
   render() {
     return (
       <>
         <Row>
           <Col>
             <Card
-              style={{
-                border: this.state.selected ? "2px solid red" : "none",
-              }}
+              onClick={() =>
+                this.props.changeSelectedCard(this.props.book.asin)
+              }
+              style={
+                {
+                  // opacity: this.state.selected ? "0.5" : "1",
+                }
+              }
             >
               <Card.Img
                 className="img-fluid"
@@ -44,9 +46,6 @@ class SingleBook extends React.Component {
                 </Button>
               </Card.Body>
             </Card>
-          </Col>
-          <Col>
-            {this.state.selected && <CommentArea asin={this.props.book.asin} />}
           </Col>
         </Row>
       </>

@@ -1,6 +1,6 @@
 import { ListGroup, Button } from "react-bootstrap";
 
-const deleteComment = async (asin) => {
+export const deleteComment = async (asin) => {
   try {
     let response = await fetch(
       "https://striveschool-api.herokuapp.com/api/comments/" + asin,
@@ -22,7 +22,7 @@ const deleteComment = async (asin) => {
   }
 };
 
-const SingleComment = ({ comment }) => (
+export const SingleComment = ({ comment }) => (
   <ListGroup.Item>
     {comment.comment}
     <Button
@@ -34,5 +34,3 @@ const SingleComment = ({ comment }) => (
     </Button>
   </ListGroup.Item>
 );
-
-export default SingleComment;
