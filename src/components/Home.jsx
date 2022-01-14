@@ -44,13 +44,14 @@ class Home extends React.Component {
               {this.props.card
                 .filter(
                   (
-                    b //searchQuery begins here with tricks ßand headaches
+                    b //searchQuery begins here with tricks and headaches
                   ) => b.title.toLowerCase().includes(this.state.searchQuery)
                 )
                 .map((b) => (
-                  <Col xl={4} xs={12} sm={6} className="my-3">
+                  <Col key={b.asin} xl={4} xs={12} sm={6} className="my-3">
                     <Singlebook
                       book={b}
+                      selectedCard={this.state.selectedCard}
                       changeSelectedCard={(asin) => {
                         console.log("TEST for TEST 55");
                         this.setState({ ...this.state, selectedCard: asin });

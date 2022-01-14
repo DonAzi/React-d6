@@ -3,15 +3,22 @@ import { Button, Card, Col, Row } from "react-bootstrap";
 import MyBadge from "./MyBadge";
 
 class SingleBook extends React.Component {
-  state = {
-    selected: false,
-  };
+  // state = {
+  //   selected: false,
+  // };
   render() {
     return (
       <>
         <Row>
           <Col>
-            <Card>
+            <Card
+              style={{
+                opacity:
+                  this.props.selectedCard === this.props.book.asin
+                    ? "0.5"
+                    : "1",
+              }}
+            >
               <Card.Img
                 className="img-fluid"
                 style={{
@@ -28,11 +35,6 @@ class SingleBook extends React.Component {
                 <MyBadge text="info" color={"success"} />
                 <Button
                   className="btn btn-primary btn-sm ml-5"
-                  // style={{
-                  //   opacity: this.props.changeSelectedCard(this.props.book.asin)
-                  //     ? "0.5"
-                  //     : "1",
-                  // }}
                   onClick={() =>
                     this.props.changeSelectedCard(this.props.book.asin)
                   }

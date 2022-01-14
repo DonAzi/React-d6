@@ -53,7 +53,7 @@ class AddComments extends Component {
   render() {
     return (
       <div>
-        <Form onSubmit={this.sendComment}>
+        <Form className="bg-dark mt-5" onSubmit={this.sendComment}>
           <Form.Group>
             <Form.Label>Comments</Form.Label>
             <Form.Control
@@ -86,11 +86,11 @@ class AddComments extends Component {
               <option>1</option>
               <option>2</option>
               <option>3</option>
-              <option>4</option>
               <option>5</option>
+              <option>4</option>
             </Form.Control>
           </Form.Group>
-          <Button className="btn btn-sm mb-2" variant="primary" type="submit">
+          <Button className="btn btn-sm mb-3" variant="primary" type="submit">
             SUBMIT
           </Button>
         </Form>
